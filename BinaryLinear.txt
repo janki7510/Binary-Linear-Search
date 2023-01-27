@@ -1,0 +1,61 @@
+#include<stdio.h>
+#include<conio.h>
+int binary(int a[],int n,int data)
+{
+  int mid,l,r;
+  l=0;r=n-1;
+  while(l<r)
+  {
+   mid=(l+r)/2;
+   if(data==a[mid])
+    return mid;
+   else if(data>a[mid])
+    l=mid+1;
+   else
+    r=mid-1;
+  }
+  return -1;
+}
+void linear(int a[],int n,int data)
+{
+ int i;
+ for(i=0;i<n;i++)
+ {
+  if(data==a[i])
+  {
+   printf("data is found at %d",i);
+   break;
+  }
+ }
+}
+void main()
+{
+ int ch,searchindex,l,data;
+ int a[7];
+ int n=7,i;
+ clrscr();
+ for(i=0;i<n;i++)
+ {
+  printf("\na[%d]=",i);
+  scanf("%d",&a[i]);
+ }
+ printf("\nEnter data u want to find:");
+ scanf("%d",&data);
+ while(1)
+ {
+  printf("\n1.binary search \n2.linear search Search \n3.exit \nEnter your choice:");
+  scanf("%d",&ch);
+  switch(ch)
+  {
+   case 1:
+   searchindex=binary(a,n,data);
+    printf("\nelement find at %d\n",searchindex);
+   break;
+   case 2:
+   linear(a,n,data);
+   break;
+   case 3:exit(0);
+  }
+ }
+ getch();
+}
